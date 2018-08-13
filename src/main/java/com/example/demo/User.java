@@ -25,14 +25,14 @@ public class User {
     private String lastName;
 
     @Column(name = "enabled")
-    private String enabled;
+    private boolean enabled;
 
     @Column(name = "username")
     private String username;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id"))
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
     public String getPassword() {
@@ -80,11 +80,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getEnabled() {
+    public boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(String enabled) {
+    public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -103,4 +103,6 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
+
 }
